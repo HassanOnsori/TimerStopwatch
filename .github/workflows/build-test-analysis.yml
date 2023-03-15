@@ -22,6 +22,10 @@ jobs:
   job1:
 
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      checks: write
+      id-token: write
 
     steps:
       - name: Checkout
