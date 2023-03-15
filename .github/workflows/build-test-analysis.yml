@@ -5,9 +5,10 @@
 # Build the project using Maven.
 # Run the unit tests using Maven.
 # Cache the Maven repository to speed up builds.
+# Generate an HTML report of the test results using the JUnit Test Report action.
 # Job2:
 # Code quality analysis with SonarQube
-# Generate an HTML report of the test results using the JUnit Test Report action.
+
 
 
 name: Build-Test-Analysis
@@ -38,6 +39,18 @@ jobs:
           
       - name: Test with Maven
         run: mvn test
+        
+      - name: Generate Test Report
+        uses: dorny/test-reporter@v2.2.0
+        with:
+          junit: './target/surefire-reports/*.xml'
+          
+      - name: Upload Test Report Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-report
+          path: junit-html-report
+          
   job2:
     runs-on: ubuntu-latest
     needs: job1
