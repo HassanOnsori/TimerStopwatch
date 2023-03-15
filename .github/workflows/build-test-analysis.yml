@@ -1,4 +1,4 @@
-## This workflow will trigger on every push or pull request to the main branch. It will run on the ubuntu-latest environment and perform the following steps:
+# This workflow will trigger on every push or pull request to the main branch. It will run on the ubuntu-latest environment and perform the following steps:
 # Job1: 
 # Check out the code from the repository.
 # Set up Java 17 on the runner.
