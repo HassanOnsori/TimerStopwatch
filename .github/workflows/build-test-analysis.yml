@@ -40,19 +40,16 @@ jobs:
       - name: Test with Maven
         run: mvn test
         
-      - name: Generate Test Report
-        uses: junit-team/junit5-report-maven-plugin@2.5.0
+      - name: Generate HTML report
+        uses: EnricoMi/junit2html@v2.0.1
         with:
-          reportsDirectories: |
-            ${project.build.directory}/surefire-reports
-            ${project.build.directory}/failsafe-reports
-          siteDirectory: ${project.build.directory}/junit-report
-          
+          srcdir: './target/surefire-reports'
+          outdir: './junit-html-report'
       - name: Upload Test Report Artifact
         uses: actions/upload-artifact@v2
         with:
           name: test-report
-          path: target/junit-report/
+          path: junit-html-report
           
   job2:
     runs-on: ubuntu-latest
