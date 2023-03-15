@@ -46,10 +46,11 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         run: >
-            mvn sonar:sonar -Dsonar.branch.name=main
+            mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
             -Dsonar.host.url=https://sonarcloud.io
             -Dsonar.organization=hassanonsori
-            -Dsonar.projectKey=HassanOnsori_TimerStopwatch
+            -Dsonar.projectKey=hassanonsori_timerstopwatch
+            -Dsonar.branch.name=main
             -Dsonar.login=$SONAR_TOKEN
             
             
