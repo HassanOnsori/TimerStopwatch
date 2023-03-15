@@ -41,16 +41,18 @@ jobs:
         run: mvn test
         
       - name: Generate Test Report
-        uses: matti/test-reporter-action@v3.0.0
+        uses: junit-team/junit5-report-maven-plugin@2.5.0
         with:
-          reporter: junit-test-reporter
-          junit_report_path: ./target/surefire-reports/*.xml
+          reportsDirectories: |
+            ${project.build.directory}/surefire-reports
+            ${project.build.directory}/failsafe-reports
+          siteDirectory: ${project.build.directory}/junit-report
           
       - name: Upload Test Report Artifact
         uses: actions/upload-artifact@v2
         with:
           name: test-report
-          path: junit-html-report
+          path: target/junit-report/
           
   job2:
     runs-on: ubuntu-latest
