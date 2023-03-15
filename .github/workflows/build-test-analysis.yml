@@ -41,7 +41,7 @@ jobs:
         run: mvn test
         
       - name: Generate Test Report
-        uses: dorny/test-reporter@v2.2.0
+        uses: dorny/test-reporter@v3.0.0
         with:
           junit: './target/surefire-reports/*.xml'
           
