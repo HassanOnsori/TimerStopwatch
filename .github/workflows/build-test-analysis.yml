@@ -5,7 +5,6 @@
 # Build the project using Maven.
 # Run the unit tests using Maven.
 # Cache the Maven repository to speed up builds.
-# Generate an HTML report of the test results using the JUnit Test Report action.
 # Job2:
 # Code quality analysis with SonarQube
 
@@ -55,20 +54,6 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
           cache: 'maven'
-        
-      - name: Cache SonarQube packages
-        uses: actions/cache@v3
-        with:
-          path: ~/.sonar/cache
-          key: ${{ runner.os }}-sonar
-          restore-keys: ${{ runner.os }}-sonar
-          
-      - name: Cache Maven packages
-        uses: actions/cache@v3
-        with:
-          path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2
           
       - name: Analyse with SonarQube
         env:
