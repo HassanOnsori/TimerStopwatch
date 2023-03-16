@@ -7,7 +7,7 @@
 # Job2:
 # Check out the code from the repository.
 # Set up Java 17 on the runner.
-# Build and code quality analysis with SonarQube
+# Build and generate code quality analysis report with SonarQube on https://sonarcloud.io/
 
 
 
@@ -56,13 +56,7 @@ jobs:
           java-version: '17'
           cache: 'maven'
       
-      - name: SonarCloud Scan
-        uses: sonarsource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      
-      - name: Analyse with SonarQube
+      - name: Generate SonarQube report on https://sonarcloud.io/
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
