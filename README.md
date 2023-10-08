@@ -23,7 +23,6 @@ for a tutorial on YouTube that explains (a perhaps slightly older version of) th
 ### Installation and testing instructions
 
 The code can be compiled, tested and executed with maven:
-
 - "mvn compile" to only compile the code
 - "mvn test" to compile and test
 - "mvn package" to compile, test and create a jar file
