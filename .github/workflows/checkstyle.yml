@@ -27,4 +27,16 @@ jobs:
 
     - name: Check code style with Checkstyle
       run: mvn checkstyle:checkstyle
+      
+    - name: Archive HTML Checkstyle Report
+      run: mvn checkstyle:checkstyle-aggregate
+      env:
+        REPORT_FILE: target/site/checkstyle.html
+      shell: bash
+
+    - name: Upload Checkstyle Report
+      uses: actions/upload-artifact@v2
+      with:
+        name: checkstyle-report
+        path: ${{ env.REPORT_FILE }}
 
