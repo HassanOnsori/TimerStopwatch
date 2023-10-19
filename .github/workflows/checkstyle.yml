@@ -38,5 +38,5 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: checkstyle-report
-        path: ${{ env.REPORT_FILE }}
+        path: ${{ runner.workspace }}/${{ env.REPORT_FILE }}
 
