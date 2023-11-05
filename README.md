@@ -10,7 +10,6 @@ The aim of the example is to illustrate how to model composite statecharts,
 how to implement them in Java in object-oriented style using the State Design Pattern,
 and how to test them with JUnit unit tests.
 
-
 ### Video Tutorial
 See https://www.youtube.com/watch?v=5uYOPUj5J3Q
 for a tutorial on YouTube that explains (a perhaps slightly older version of) this example Java source code.
