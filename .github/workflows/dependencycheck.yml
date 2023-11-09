@@ -39,4 +39,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: dependency-check-report
-        path: ${{ env.REPORT_FILE }}
+        path: ${{ runner.workspace }}/${{ env.REPORT_FILE }}
