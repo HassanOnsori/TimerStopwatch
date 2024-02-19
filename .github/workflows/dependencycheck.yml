@@ -1,5 +1,3 @@
-name: DependencyCheck
-
 on:
   push:
     branches:
@@ -16,8 +14,17 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
+    - name: Set up Java
+      uses: actions/setup-java@v4
+      with:
+         java-version: '21'
+         distribution: 'temurin'
+         cache: maven
+         
     - name: Run Dependency Check
-      run: mvn org.owasp:dependency-check-maven:check
+      env:
+        DEPENDENCY_CHECK_API_KEY: ${{ secrets.DEPENDENCY_CHECK_API_KEY }}
+      run: mvn org.owasp:dependency-check-maven:check -DdependencyCheckApiKey=${DEPENDENCY_CHECK_API_KEY}
 
     - name: Archive Dependency Check Report
       run: mvn org.owasp:dependency-check-maven:aggregate
